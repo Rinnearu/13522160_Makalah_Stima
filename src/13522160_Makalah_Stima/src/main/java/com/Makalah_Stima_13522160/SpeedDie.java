@@ -34,6 +34,14 @@ public class SpeedDie implements Comparable<SpeedDie> {
         this.card = card;
     }
 
+    public void setTarget(SpeedDie target) {
+        this.target = target;
+    }
+
+    public boolean canClash(SpeedDie other) {
+        return this.speed > other.getSpeed() || this == other.getTarget();
+    }
+
     public Card popCard() {
         Card popped = this.card;
         this.card = null;
@@ -47,6 +55,10 @@ public class SpeedDie implements Comparable<SpeedDie> {
 
     @Override
     public String toString() {
-        return "SpeedDie{speed=" + speed + ", card=" + card + "}";
+        if (card != null) {
+            return owner.getName() + "{speed=" + speed + ", card=" + card + "}";
+        } else {
+            return owner.getName() + "{speed=" + speed + ", card=None}";
+        }
     }
 }

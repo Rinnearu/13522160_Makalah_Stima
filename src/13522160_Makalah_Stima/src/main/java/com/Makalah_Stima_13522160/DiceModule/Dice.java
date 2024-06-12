@@ -4,4 +4,5 @@ public interface Dice {
     int getMinVal();
     int getMaxVal();
     String getType();
+    double calculateWinrate(Dice other);
 }
